@@ -57,7 +57,7 @@ class ProjectifyAnimation {
     // }
 
     return Lottie.asset(
-      'assets/animations/$animationName.json',
+      'packages/projectify_animations/assets/animations/$animationName.json',
       fit: fit,
       repeat: repeat,
       reverse: reverse,
