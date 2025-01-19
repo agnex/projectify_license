@@ -47,14 +47,14 @@ class ProjectifyAnimation {
     bool reverse = false,
     Animation<double>? controller,
   }) {
-    if (!_licenseManager.isLicenseValid(license)) {
-      return Center(
-        child: Text(
-          'Invalid license. Unable to display animation.',
-          style: TextStyle(color: Colors.red, fontSize: 16),
-        ),
-      );
-    }
+    // if (!_licenseManager.isLicenseValid(license)) {
+    //   return Center(
+    //     child: Text(
+    //       'Invalid license. Unable to display animation.',
+    //       style: TextStyle(color: Colors.red, fontSize: 16),
+    //     ),
+    //   );
+    // }
 
     return Lottie.asset(
       'assets/animations/$animationName.json',
