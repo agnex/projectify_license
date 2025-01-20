@@ -5,6 +5,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:lottie/lottie.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:projectify_license/example.dart';
 
 /// A singleton class to manage animation licenses from a remote file.
 class LicenseManager {
@@ -89,7 +91,38 @@ class ProjectifyAnimation {
   }
 }
 
-/// Example usage of LicenseManager and ProjectifyAnimation.
+/// Wrapper for styled text using Google Fonts (default: Poppins).
+class PText extends StatelessWidget {
+  final String text;
+  final TextStyle? style;
+  final TextAlign? textAlign;
+  final TextOverflow? overflow;
+  final int? maxLines;
+
+  const PText(
+    this.text, {
+    super.key,
+    this.style,
+    this.textAlign,
+    this.overflow,
+    this.maxLines,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: GoogleFonts.poppins(
+        textStyle: style,
+      ),
+      textAlign: textAlign,
+      overflow: overflow,
+      maxLines: maxLines,
+    );
+  }
+}
+
+/// Example usage of LicenseManager, ProjectifyAnimation, and PText.
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -100,24 +133,5 @@ Future<void> main() async {
     runApp(MyApp());
   } catch (e) {
     debugPrint('App failed to initialize due to license errors: $e');
-  }
-}
-
-class MyApp extends StatelessWidget {
-  final ProjectifyAnimation animationHandler = ProjectifyAnimation();
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('Projectify Animations')),
-        body: Center(
-          child: animationHandler.serveAnimation(
-            animationName: 'example_animation',
-            fallbackWidget: Icon(Icons.error, color: Colors.red, size: 48),
-          ),
-        ),
-      ),
-    );
   }
 }
